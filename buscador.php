@@ -6,8 +6,22 @@
     <title>Buscador</title>
 </head>
 <body>
-    <div>
-        <input type="text" name="buscador" id="buscador">
-    </div>
+
+<?php
+
+include("php/buscar.php");
+//incluimos el archivo que hace la busqueda
+
+?>
+
+    <form action="">
+        <select name="Pais" id="Pais">
+            <?php
+            echo $opcionesPais
+            //imprimimos la variable con toda la informacion
+            ?>
+        </select>
+        <input type="text">
+    </form>
 </body>
 </html>

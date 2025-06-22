@@ -13,9 +13,7 @@
         <a href="buscador.php">Buscar Fotos</a>
         <a href="">Crear Album</a>
         <a href="">Mis Albumes</a>
-    </div>
-    
-    
+    </div>    
 
 
 </body>
