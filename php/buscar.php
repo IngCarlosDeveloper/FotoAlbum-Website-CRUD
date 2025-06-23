@@ -1,17 +1,72 @@
 <?php
+#------------------------------------------------CONEXION A LA DB----------------------------------------
 
 require "conexion.php"; //llamo el archivo con permisos para la db
 
-$sql_paises = "SELECT * from paises;"; //sintaxis sql para hacer la busqueda
+#-----------------------------------------------BUSCADOR POR PALABRA-----------------------------------------
 
-$resultado_paises = mysqli_query($conexion, $sql_paises); //con los permisos de $conexion ejecuto $sql_query y almaceno en $resultado_paises
+$buscar = isset($_POST['palabraBuscar']) ? $conexion-> real_escape_string($_POST['palabraBuscar']) : NULL;
+//Extrae la palabra del input
 
-$opcionesPais = 0;
+$pais = isset($_POST['Pais']) ? $conexion-> real_escape_string($_POST['Pais']) : NULL;
+//Extrae el id de la seleccion de la lista
+$columnas = ["IdFoto", "Titulo", "Fecha", "Album", "FRegistro"]; //Columnas de la tabla fotos
+$contar = count($columnas); //Cuenta cuantos datos hay en $columnas
 
-while ($fila = mysqli_fetch_assoc($resultado_paises)){
-    $opcionesPais .= "<option value =". $fila["IdPais"] .">". $fila["NomPais"] ."</option>";
-    //En el bucle se empaqueta "<option value = $variable> $variable </option>"
+$tabla = "fotos"; 
+
+$where = '';
+
+if($pais != 0){
+    $where .= "WHERE Pais = $pais";
 }
 
-// bucle que imprime fila x fila el resultado del select
+if($pais != 0 && $buscar != NULL){
+    $where .= " AND (";
+} elseif ($pais = 0 && $buscar != NULL){
+     $where = "WHERE ";
+}
+
+if($buscar != NULL){
+
+    for($i =0; $i < $contar; $i++){
+        $where .= $columnas[$i] . " LIKE '%". $buscar . "%' OR ";
+    } //Bucle para buscar la palabra por cada columna
+
+    $where = substr_replace(string: $where, replace: "", offset: -3);
+    $where .= ")";
+    //Se elimina el ultimo OR
+
+}
+
+$sqlBuscar = "SELECT * FROM $tabla $where;";
+
+$resultadobusqueda = mysqli_query($conexion, $sqlBuscar);
+
+#------------------------------------------EMPAQUETAR PARA EL HTML----------------------------
+
+$num_rows = $resultadobusqueda->num_rows;
+
+$html = '';
+
+if($num_rows > 0){
+
+    while($row = mysqli_fetch_assoc($resultadobusqueda)){
+        $html .= '<tr>';
+
+        for($i=0; $i < $contar; $i++){
+             $html .= '<td>'. $row[$columnas[$i]] .'</td>';
+        }
+
+        $html .= '</tr>';
+    }
+}else{
+    $html .= '<tr>';
+    $html .= '<td>Sin resultado</td>';
+    $html .= '</tr>';
+}
+
+echo json_encode( $html, JSON_UNESCAPED_UNICODE);
+
+
 ?>
