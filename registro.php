@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2>Formulario de Registro</h2>
-    <form action="procesar_registro.php" method="POST">
+    <form action="php/procesar_registro.php" method="POST">
         <label for="usuario">Nombre de Usuario:</label><br>
         <input type="text" id="usuario" name="usuario" maxlength="15" required><br><br>
 

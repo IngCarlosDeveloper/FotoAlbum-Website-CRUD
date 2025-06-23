@@ -8,7 +8,7 @@
 <body>
 
     <div>
-        <a href="">Registro</a>
+        <a href="registro.php">Registro</a>
         <a href="">Login</a>
         <a href="buscador.php">Buscar Fotos</a>
         <a href="">Crear Album</a>
