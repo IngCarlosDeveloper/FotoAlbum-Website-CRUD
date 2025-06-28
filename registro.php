@@ -1,3 +1,7 @@
+<?php
+include "php/listapais.php";
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,7 +11,7 @@
 </head>
 <body>
     <h2>Formulario de Registro</h2>
-    <form action="php/procesar_registro.php" method="POST">
+    <form action="php/procesar_registro.php" method="POST" enctype="multipart/form-data">
         <label for="usuario">Nombre de Usuario:</label><br>
         <input type="text" id="usuario" name="usuario" maxlength="15" required><br><br>
 
@@ -26,22 +30,23 @@
         <label for="fnacimiento">Fecha de Nacimiento:</label><br>
         <input type="date" id="fnacimiento" name="fnacimiento" required><br><br>
 
+        <label for="ciudad">Ingrese ciudad</label><br>
+        <input type="text" id="ciudad" name="ciudad" maxlength="15" required><br><br>
+
         <label for="pais">País:</label><br>
         <select id="pais" name="pais" required>
-        <option value="">Seleccione un país</option>
-            <?php
-            // Generar opciones de la lista desplegable
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo '<option value="' . $row['IdPais'] . '">' . htmlspecialchars($row['NomPais']) . '</option>';
-                }
-            } else {
-                echo '<option value="">No hay países disponibles</option>';
-            }
+        <option value="0">Seleccione un país</option>
+        <?php
+            echo $opcionesPais
+            //imprimimos la variable con toda la informacion
             ?>
         </select><br><br>
+        
+        <label for="foto">Foto de Perfil:</label><br>
+        <input type="file" id="foto" name="foto" accept="image/*" required><br><br>
 
         <button type="submit">Registrar</button>
     </form>
+    <script type="text/javascript" src="js/buscador.js"></script>
 </body>
 </html>
