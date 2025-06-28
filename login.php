@@ -6,9 +6,9 @@
     <title>login xd</title>
 </head>
 <body>
-    <form action="procesar_login.php" method="post">
-        Usuario: <input name="NomUsuario" required><br>
-        Clave: <input type="password" name="Clave" required><br>
+    <form action="php/procesar_login.php" method="post">
+        Usuario: <input id="usuario" name="usuario" required><br>
+        Clave: <input id="clave" type="password" name="clave" required><br>
      <input type="submit" value="Entrar">
 </form>
 </body>

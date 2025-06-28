@@ -9,7 +9,7 @@
 
     <div>
         <a href="registro.php">Registro</a>
-        <a href="">Login</a>
+        <a href="login.php">Login</a>
         <a href="buscador.php">Buscar Fotos</a>
         <a href="">Crear Album</a>
         <a href="">Mis Albumes</a>
