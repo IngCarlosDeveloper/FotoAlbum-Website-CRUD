@@ -1,26 +1,40 @@
 <?php
 
-echo "Hola";
+include "conexion.php";
 
-session_start();
+$usuario = $_POST['usuario'];
+$clave = $_POST['clave'];
 
-$pdo = new PDO("mysql:host=localhost;dbname=proyectobd", "", "");
+$sql = "SELECT IdUsuario, NomUsuario FROM Usuarios WHERE NomUsuario = ? AND Clave = ?";
+$stmt = $conexion->prepare($sql);
 
-$NomUsuario = $_POST['usuario'] ?? '';
-$Clave = $_POST['clave'] ?? '';
-
-echo $NomUsuario;
-echo $Clave;
-
-$stmt = $pdo->prepare("SELECT * FROM usuarios WHERE NomUsuario = ? LIMIT 1");
-$stmt->execute([$usuario]);
-$user = $stmt->fetch();
-
-if ($user && $user['Clave'] === $clave) {
-    $_SESSION['NomUsuario'] = $usuario;  // Guardamos sesión
-    header("Location: buscador.php"); // Redirige al buscador
-    exit;
-} else {
-    echo "Usuario o clave incorrectos";
+// Si la consulta falla, te avisa cualquier vaina
+if ($stmt === false) {
+    die("Error en la consulta SQL: " . $conexion->error);
 }
+
+$stmt->bind_param("ss", $usuario, $clave);
+$stmt->execute();
+$resultado = $stmt->get_result();
+
+//vemos si se encontró un usuario.
+if ($resultado->num_rows === 1) {
+    // Si hay usuario, iniciamos la sesión.
+    session_start();
+    $fila = $resultado->fetch_assoc();
+    $_SESSION['IdUsuario'] = $fila['IdUsuario'];
+    $_SESSION['NomUsuario'] = $fila['NomUsuario'];
+    
+    // Redirigimos al usuario al buscador.
+    header("Location: ../index.php");
+    exit();
+} else {
+    // Si no se encontró el usuario o la clave es incorrecta.
+    echo "Usuario o clave incorrectos. <a href='../login.html'>Volver a intentar</a>";
+}
+
+// Cerramos la conexión.
+$stmt->close();
+$conexion->close();
+
 ?>
