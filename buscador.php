@@ -47,5 +47,6 @@ include("php/listapais.php");
 
 
     <script type="text/javascript" src="js/buscador.js"></script>
+    <a href="index.php">Volver al inicio</a>
 </body>
 </html>

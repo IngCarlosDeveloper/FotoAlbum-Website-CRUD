@@ -72,6 +72,4 @@ if($num_rows > 0){
 }
 
 echo json_encode( $html, JSON_UNESCAPED_UNICODE);
-
-
 ?>
