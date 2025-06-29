@@ -30,6 +30,8 @@ $nombre_usuario = $_SESSION['NomUsuario'];
         <li><a href="añadir_foto_album.php">Añadir foto a un álbum</a></li>
         
         <li><a href="buscador.php">Ir al buscador</a></li>
+
+        <li><a href="perfil.php">Ir al perfil</a></li>
     </ul>
     
     <hr>
