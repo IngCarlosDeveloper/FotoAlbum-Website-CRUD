@@ -35,11 +35,17 @@ $sql = "INSERT INTO Usuarios (NomUsuario, Clave, Email, Sexo, FNacimiento, Pais,
 
 
 if( mysqli_query($conexion, $sql) ){
-    echo "¡Usuario registrado! <a href='../login.php'>Iniciar sesion</a>";
-
+    echo "<script>
+        alert('¡Usuario registrado!');
+        window.location.href = '../login.php';
+    </script>";
+    exit();
 } else {
     // Si falla, muestra el error y elimina el archivo subido.
-    echo "Hubo un error al registrar el usuario: " . mysqli_error($conexion);
+    echo "<script>
+        alert('Hubo un error al registrar el usuario: " . mysqli_error($conexion) . "');
+        window.location.href = '../login.php';
+    </script>";
     // Borramos el archivo si se subió, para no dejar archivos basura.
     if (!empty($nombre_fichero_foto) && file_exists($ruta_fichero_destino)) {
         unlink($ruta_fichero_destino);

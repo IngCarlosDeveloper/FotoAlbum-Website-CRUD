@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalle Foto</title>
+    <link rel="stylesheet" href="css/ver_foto.css">
 </head>
-<body>
+<body class="main-body">
 
     <?php
 
@@ -35,13 +36,15 @@
     }
     }
     ?>
-    <div>
-        <h1>Titulo de la Foto:<?php echo $titulo_foto; ?> </h1>
-        <img src="fotos/<?php echo $ruta_foto; ?>" alt="">
-        <h2>Fecha de creacion:<?php echo $fecha_foto; ?> </h2>
-        <h2>Pais de la Foto:<?php echo $nombre_pais; ?> </h2>
-        <h2>Album:<?php echo $nombre_album; ?> </h2>
-        <h2>Autor:<?php echo $nombre_usuario; ?> </h2>
+    <div class="foto-detalle">
+        <h1 class="foto-titulo">Titulo de la Foto: <?php echo $titulo_foto; ?></h1>
+        <img src="fotos/<?php echo $ruta_foto; ?>" alt="" class="foto-img">
+        <div class="foto-info">
+            <h2>Fecha de creacion: <span><?php echo $fecha_foto; ?></span></h2>
+            <h2>Pais de la Foto: <span><?php echo $nombre_pais; ?></span></h2>
+            <h2>Album: <span><?php echo $nombre_album; ?></span></h2>
+            <h2>Autor: <span><?php echo $nombre_usuario; ?></span></h2>
+        </div>
     </div>
 </body>
 </html>

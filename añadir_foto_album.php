@@ -40,17 +40,17 @@ if ($resultado_paises->num_rows > 0) {
 
 $conexion->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Añadir foto a álbum</title>
+    <link rel="stylesheet" href="css/añadir_foto_album.css">
 </head>
-<body>
-    <h2>Añadir Foto a Álbum</h2>
-    <form action="php/procesar_foto.php" method="POST" enctype="multipart/form-data">
+<body class="main-body">
+    <h2 class="form-title">Añadir Foto a Álbum</h2>
+    <form action="php/procesar_foto.php" method="POST" enctype="multipart/form-data" class="form-foto">
         <label for="titulo">Título de la foto (opcional):</label><br>
         <input type="text" id="titulo" name="titulo"><br><br>
 
@@ -70,9 +70,9 @@ $conexion->close();
             <?php echo $opcionesPais; ?>
         </select><br><br>
 
-        <button type="submit">Subir Foto</button>
+        <button type="submit" class="btn-principal">Subir Foto</button>
     </form>
     <br>
-    <a href="index.php">Volver al inicio</a>
+    <a href="index.php" class="accion-link">Volver al inicio</a>
 </body>
 </html>

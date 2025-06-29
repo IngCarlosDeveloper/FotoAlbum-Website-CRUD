@@ -20,17 +20,17 @@ if ($resultado_paises->num_rows > 0) {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear nuevo álbum</title>
+    <link rel="stylesheet" href="css/crear_album.css">
 </head>
-<body>
-    <h2>Crear Nuevo Álbum</h2>
-    <form action="php/procesar_album.php" method="POST">
+<body class="main-body">
+    <h2 class="form-title">Crear Nuevo Álbum</h2>
+    <form action="php/procesar_album.php" method="POST" class="form-album">
         <label for="titulo">Título:</label><br>
         <input type="text" id="titulo" name="titulo" required><br><br>
 
@@ -48,10 +48,10 @@ if ($resultado_paises->num_rows > 0) {
 
         <input type="hidden" name="usuario" value="<?php echo $_SESSION['IdUsuario']; ?>">
 
-        <button type="submit">Crear Álbum</button>
+        <button type="submit" class="btn-principal">Crear Álbum</button>
     </form>
     <br>
-    <a href="index.php">Volver al inicio</a>
+    <a href="index.php" class="accion-link">Volver al inicio</a>
 </body>
 </html>
 <?php

@@ -30,7 +30,11 @@ if ($resultado->num_rows === 1) {
     exit();
 } else {
     // Si no se encontró el usuario o la clave es incorrecta.
-    echo "Usuario o clave incorrectos. <a href='../login.php'>Volver a intentar</a>";
+    echo "<script>
+        alert('Usuario o clave incorrectos.');
+        window.location.href = '../login.php';
+    </script>";
+    exit();
 }
 
 // Cerramos la conexión.

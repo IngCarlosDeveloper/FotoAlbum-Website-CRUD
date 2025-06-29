@@ -1,0 +1,45 @@
+body.main-body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f6fa;
+    margin: 0;
+    padding: 0;
+}
+
+.foto-detalle {
+    background: #fff;
+    max-width: 500px;
+    margin: 40px auto 0 auto;
+    padding: 30px 24px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(44,62,80,0.07);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.foto-titulo {
+    color: #2980b9;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.foto-img {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 8px;
+    border: 2px solid #e1e8ed;
+    box-shadow: 0 1px 6px rgba(44,62,80,0.10);
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+.foto-info h2 {
+    color: #34495e;
+    font-size: 1.1em;
+    margin: 8px 0;
+    text-align: left;
+}
+
+.foto-info span {
+    color: #217dbb;
+}

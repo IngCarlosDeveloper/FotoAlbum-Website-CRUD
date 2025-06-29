@@ -43,7 +43,11 @@ if (move_uploaded_file($fichero_info['tmp_name'], $ruta_fichero_destino)) {
     $stmt->bind_param("ssiis", $titulo, $fecha, $pais, $album, $nombre_fichero_unico);
     
     if ($stmt->execute()) {
-        echo "¡Foto subida y registrada con éxito! <br><a href='../buscador.php'>Volver al buscador</a>";
+        echo "<script>
+            alert('¡Foto subida y registrada con éxito!');
+            window.location.href = '../index.php';
+        </script>";
+        exit();
     } else {
         // Si hay un error al insertar en la BD, eliminamos el archivo subido.
         unlink($ruta_fichero_destino);

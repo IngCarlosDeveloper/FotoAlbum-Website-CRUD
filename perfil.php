@@ -48,41 +48,7 @@ $resultado_fotos = $stmt_fotos->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de <?php echo $nombreUsuario; ?></title>
-    <style>
-        .perfil-info {
-            display: flex;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-        .perfil-info img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%; /* Para que la foto de perfil sea redonda */
-            object-fit: cover;
-            margin-right: 20px;
-            border: 3px solid #ccc;
-        }
-        .galeria {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .foto-item {
-            border: 1px solid #ccc;
-            padding: 10px;
-            width: 250px;
-            text-align: center;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-        }
-        .foto-item img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin-bottom: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/perfil.css">
 </head>
 <body>
     <p><a href="index.php">← Volver al inicio</a> | <a href="php/logout.php">Cerrar sesión</a></p>
@@ -118,7 +84,7 @@ $resultado_fotos = $stmt_fotos->get_result();
                 <?php
             }
         } else {
-            echo "<p>Aún no has subido ninguna foto. <a href='añadir_foto.php'>¡Sube la primera!</a></p>";
+            echo "<p>Aún no has subido ninguna foto. <a href='crear_album.php'>¡Sube la primera!</a></p>";
         }
 
         $stmt_fotos->close();

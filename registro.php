@@ -8,10 +8,11 @@ include "php/listapais.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Usuario</title>
+    <link rel="stylesheet" href="css/registro.css">
 </head>
-<body>
-    <h2>Formulario de Registro</h2>
-    <form action="php/procesar_registro.php" method="POST" enctype="multipart/form-data">
+<body class="main-body">
+    <h2 class="form-title">Formulario de Registro</h2>
+    <form action="php/procesar_registro.php" method="POST" enctype="multipart/form-data" class="form-registro">
         <label for="usuario">Nombre de Usuario:</label><br>
         <input type="text" id="usuario" name="usuario" maxlength="15" required><br><br>
 
@@ -45,7 +46,7 @@ include "php/listapais.php";
         <label for="foto">Foto de Perfil:</label><br>
         <input type="file" id="foto" name="foto" accept="image/*" required><br><br>
 
-        <button type="submit">Registrar</button>
+        <button type="submit" class="btn-principal">Registrar</button>
     </form>
     <script type="text/javascript" src="js/buscador.js"></script>
 </body>

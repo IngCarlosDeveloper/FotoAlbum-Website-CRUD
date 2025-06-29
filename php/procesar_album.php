@@ -28,7 +28,11 @@ if ($stmt === false) {
 $stmt->bind_param("sssii", $titulo, $descripcion, $fecha, $pais, $idUsuario);
 
 if ($stmt->execute()) {
-    echo "¡Álbum creado! <a href='../buscador.php'>Volver al buscador</a>";
+    echo "<script>
+        alert('¡Álbum creado!');
+        window.location.href = '../index.php';
+    </script>";
+    exit();
 } else {
     echo "Hubo un error al crear el álbum: " . $stmt->error;
 }

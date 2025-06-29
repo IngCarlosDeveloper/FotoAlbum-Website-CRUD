@@ -1,0 +1,82 @@
+body.main-body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f6fa;
+    margin: 0;
+    padding: 0;
+}
+
+.form-title {
+    color: #34495e;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.form-album {
+    background: #fff;
+    max-width: 400px;
+    margin: 30px auto 0 auto;
+    padding: 30px 24px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(44,62,80,0.07);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-album label {
+    color: #2980b9;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.form-album input[type="text"],
+.form-album input[type="date"],
+.form-album textarea,
+.form-album select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #e1e8ed;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 1em;
+    background: #f4f6fa;
+}
+
+.form-album textarea {
+    min-height: 60px;
+    resize: vertical;
+}
+
+.btn-principal {
+    background: #3498db;
+    color: #fff;
+    border: none;
+    padding: 12px 0;
+    border-radius: 6px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-principal:hover {
+    background: #217dbb;
+}
+
+.accion-link {
+    display: block;
+    background: #3498db;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 5px;
+    text-align: center;
+    max-width: 200px;
+    margin: 20px auto 0 auto;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.accion-link:hover {
+    background: #217dbb;
+}
