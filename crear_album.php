@@ -6,7 +6,7 @@ session_start();
 
 // Si no hay sesion, afuera mi rey.
 if (!isset($_SESSION['IdUsuario'])) {
-    header("Location: login.html");
+     header(header: "Location: login.php");
     exit();
 }
 

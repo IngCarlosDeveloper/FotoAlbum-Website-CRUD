@@ -4,14 +4,14 @@ include "php/conexion.php";
 session_start();
 
 if (!isset($_SESSION['IdUsuario'])) {
-    header("Location: login.html");
+     header(header: "Location: login.php");
     exit();
 }
 
 $idUsuario = $_SESSION['IdUsuario'];
 
 // álbumes del usuario 
-$sql_albumes = "SELECT IdAlbum, Titulo FROM Albumes WHERE Usuario = ? ORDER BY Titulo ASC";
+$sql_albumes = "SELECT IdAlbum, Titulo_album FROM Albumes WHERE Usuario = ? ORDER BY Titulo_album ASC";
 $stmt_albumes = $conexion->prepare($sql_albumes);
 $stmt_albumes->bind_param("i", $idUsuario);
 $stmt_albumes->execute();
@@ -20,7 +20,7 @@ $resultado_albumes = $stmt_albumes->get_result();
 $opcionesAlbum = "";
 if ($resultado_albumes->num_rows > 0) {
     while ($fila = $resultado_albumes->fetch_assoc()) {
-        $opcionesAlbum .= "<option value='" . $fila['IdAlbum'] . "'>" . htmlspecialchars($fila['Titulo']) . "</option>";
+        $opcionesAlbum .= "<option value='" . $fila['IdAlbum'] . "'>" . htmlspecialchars($fila['Titulo_album']) . "</option>";
     }
 } else {
     // Si el usuario no tiene álbumes, F

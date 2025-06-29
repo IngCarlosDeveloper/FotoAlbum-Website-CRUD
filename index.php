@@ -3,11 +3,29 @@
 session_start();
 
 if (!isset($_SESSION['NomUsuario'])) {
-    header("Location: login.php");
+    header(header: "Location: login.php");
     exit(); // Detenemos la ejecución del script.
 }
 
 $nombre_usuario = $_SESSION['NomUsuario'];
+
+include ("php/conexion.php");
+
+$sql = "SELECT titulo, fichero from fotos ORDER BY FRegistro DESC LIMIT 5;";
+
+$resultado = mysqli_query($conexion, $sql);
+
+$fotos = '';
+
+while($row = mysqli_fetch_assoc($resultado)){
+    $ruta_foto = $row['fichero'];
+    $titulo = $row['titulo'];
+
+    $fotos .= "<h2>$titulo</h2>";
+    $fotos .= "<img src='fotos/$ruta_foto'>";
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -35,8 +53,17 @@ $nombre_usuario = $_SESSION['NomUsuario'];
     </ul>
     
     <hr>
+
+    <div>
+        <h1>Top ultimas 5 Fotos:</h1>
+        <div>
+            <?php
+            echo $fotos;
+            ?>
+        </div>
+    </div>
     
-    <p><a href="logout.php">Cerrar sesión</a></p>
+    <p><a href="php/logout.php">Cerrar sesión</a></p>
 
 </body>
 </html>

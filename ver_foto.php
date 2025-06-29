@@ -36,12 +36,12 @@
     }
     ?>
     <div>
-        <h1>Titulo de la Foto:<?php echo $titulo_foto ?> </h1>
-        <img src="" alt="">
-        <h2>Fecha de creacion:<?php echo $fecha_foto ?> </h2>
-        <h2>Pais de la Foto:<?php echo $nombre_pais ?> </h2>
-        <h2>Album:<?php echo $nombre_album ?> </h2>
-        <h2>Autor:<?php echo $nombre_usuario ?> </h2>
+        <h1>Titulo de la Foto:<?php echo $titulo_foto; ?> </h1>
+        <img src="fotos/<?php echo $ruta_foto; ?>" alt="">
+        <h2>Fecha de creacion:<?php echo $fecha_foto; ?> </h2>
+        <h2>Pais de la Foto:<?php echo $nombre_pais; ?> </h2>
+        <h2>Album:<?php echo $nombre_album; ?> </h2>
+        <h2>Autor:<?php echo $nombre_usuario; ?> </h2>
     </div>
 </body>
 </html>

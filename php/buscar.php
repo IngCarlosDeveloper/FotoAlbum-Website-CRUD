@@ -61,7 +61,7 @@ if($num_rows > 0){
         for($i=0; $i < $contar-1; $i++){
              $html .= '<td><a href="ver_foto.php?foto='.$row[$columnas[0]].'">'. $row[$columnas[$i]] .'</a></td>';
         }
-        $html .= '<td><a href="ver_foto.php?foto='.$row[$columnas[0]].'"><img src="'. $row[$columnas[$i]] .'"/></a></td>';
+        $html .= '<td><a href="ver_foto.php?foto='.$row[$columnas[0]].'"><img src="fotos/'. $row[$columnas[$i]] .'"/></a></td>';
 
         $html .= '</tr>';
     }

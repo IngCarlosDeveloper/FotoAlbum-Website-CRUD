@@ -5,13 +5,13 @@ include "php/conexion.php";
 session_start();
 
 if (!isset($_SESSION['IdUsuario'])) {
-    header("Location: login.php");
+     header(header: "Location: login.php");
     exit();
 }
 
 $idUsuario = $_SESSION['IdUsuario'];
 
-$sql = "SELECT IdAlbum, Titulo, Descripcion, Fecha FROM Albumes WHERE Usuario = ? ORDER BY Titulo ASC";
+$sql = "SELECT IdAlbum, Titulo_album, Descripcion, Fecha FROM albumes WHERE Usuario = ? ORDER BY Titulo_album ASC";
 $stmt = $conexion->prepare($sql);
 $stmt->bind_param("i", $idUsuario); // 'i' porque IdUsuario es un entero.
 $stmt->execute();
@@ -34,7 +34,7 @@ $resultado = $stmt->get_result();
     if ($resultado->num_rows > 0) {
         while ($album = $resultado->fetch_assoc()) {
             echo "<div>";
-            echo "<h4>" . htmlspecialchars($album['Titulo']) . "</h4>";
+            echo "<h4>" . htmlspecialchars($album['Titulo_album']) . "</h4>";
             echo "<p><strong>Descripción:</strong> " . htmlspecialchars($album['Descripcion']) . "</p>";
             echo "<p><strong>Fecha:</strong> " . htmlspecialchars($album['Fecha']) . "</p>";
             echo "</div>";

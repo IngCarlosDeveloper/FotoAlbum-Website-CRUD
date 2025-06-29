@@ -15,7 +15,7 @@ $fecha = $_POST['fecha'];
 $pais = !empty($_POST['pais']) ? $_POST['pais'] : null; 
 $idUsuario = $_SESSION['IdUsuario'];
 
-$sql = "INSERT INTO Albumes (Titulo, Descripcion, Fecha, Pais, Usuario) VALUES (?, ?, ?, ?, ?)";
+$sql = "INSERT INTO Albumes (Titulo_album, Descripcion, Fecha, Pais, Usuario) VALUES (?, ?, ?, ?, ?)";
 $stmt = $conexion->prepare($sql);
 
 if ($stmt === false) {

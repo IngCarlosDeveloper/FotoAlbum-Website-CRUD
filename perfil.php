@@ -4,7 +4,7 @@ include "php/conexion.php";
 session_start();
 
 if (!isset($_SESSION['IdUsuario'])) {
-    header("Location: login.html");
+     header(header: "Location: login.php");
     exit();
 }
 
@@ -28,13 +28,13 @@ $stmt_usuario->close();
 // Usa un JOIN para enlazar la tabla Fotos con Albumes y Usuarios.
 $sql_fotos = "
     SELECT
-        F.Titulo AS TituloFoto,
-        F.Fichero,
-        A.Titulo AS TituloAlbum
-    FROM Fotos F
-    JOIN Albumes A ON F.Album = A.IdAlbum
-    WHERE A.Usuario = ?
-    ORDER BY F.FRegistro DESC
+        fotos.Titulo AS TituloFoto,
+        fotos.Fichero,
+        albumes.Titulo_album AS TituloAlbum
+    FROM Fotos
+    JOIN albumes ON fotos.Album = albumes.IdAlbum
+    WHERE albumes.Usuario = ?
+    ORDER BY fotos.FRegistro
 ";
 $stmt_fotos = $conexion->prepare($sql_fotos);
 $stmt_fotos->bind_param("i", $idUsuario);
@@ -90,7 +90,7 @@ $resultado_fotos = $stmt_fotos->get_result();
     
     <div class="perfil-info">
         <?php
-        $ruta_perfil = !empty($fotoPerfil) ? "fotos_perfil/" . $fotoPerfil : "img/default_perfil.png";
+        $ruta_perfil = !empty($fotoPerfil) ? "fotos_perfil/" . $fotoPerfil : "fotos_perfil/default_perfil.png";
         ?>
         <img src="<?php echo $ruta_perfil; ?>" alt="Foto de perfil de <?php echo $nombreUsuario; ?>">
         <div>
