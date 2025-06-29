@@ -39,6 +39,7 @@ include("php/listapais.php");
                 <th> Fecha </th>
                 <th> Album </th>
                 <th> FRegistro </th>
+                <th> Foto </th>
             </thead>
             <tbody id="contenido">
             </tbody>

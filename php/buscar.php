@@ -10,7 +10,7 @@ $buscar = isset($_POST['palabraBuscar']) ? $conexion-> real_escape_string($_POST
 
 $pais = isset($_POST['Pais']) ? $conexion-> real_escape_string($_POST['Pais']) : NULL;
 //Extrae el id de la seleccion de la lista
-$columnas = ["IdFoto", "Titulo", "Fecha", "Album", "FRegistro"]; //Columnas de la tabla fotos
+$columnas = ["IdFoto", "Titulo", "Fecha", "Album", "FRegistro", "Fichero"]; //Columnas de la tabla fotos
 $contar = count($columnas); //Cuenta cuantos datos hay en $columnas
 
 $tabla = "fotos"; 
@@ -23,7 +23,7 @@ if($pais != 0){
 
 if($pais != 0 && $buscar != NULL){
     $where .= " AND (";
-} elseif ($pais = 0 && $buscar != NULL){
+} elseif ($pais == 0 && $buscar != NULL){
      $where = "WHERE ";
 }
 
@@ -34,8 +34,12 @@ if($buscar != NULL){
     } //Bucle para buscar la palabra por cada columna
 
     $where = substr_replace(string: $where, replace: "", offset: -3);
-    $where .= ")";
     //Se elimina el ultimo OR
+    
+    if($pais != 0 && $buscar != NULL){
+    $where .= ")";
+    }
+    
 
 }
 
@@ -54,9 +58,10 @@ if($num_rows > 0){
     while($row = mysqli_fetch_assoc($resultadobusqueda)){
         $html .= '<tr>';
 
-        for($i=0; $i < $contar; $i++){
-             $html .= '<td>'. $row[$columnas[$i]] .'</td>';
+        for($i=0; $i < $contar-1; $i++){
+             $html .= '<td><a href="hola.html?foto='.$row[$columnas[0]].'">'. $row[$columnas[$i]] .'</a></td>';
         }
+        $html .= '<td><img src="'. $row[$columnas[$i]] .'"/></td>';
 
         $html .= '</tr>';
     }
