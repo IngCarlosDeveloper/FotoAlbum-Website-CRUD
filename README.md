@@ -38,3 +38,5 @@ ENGLISH:
 3) Go to localhost/[folder_name]/
 
 4) Enjoy! :D
+
+Contactame: carlosmlopez1797@gmail.com
